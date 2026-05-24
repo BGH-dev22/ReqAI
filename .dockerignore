@@ -1,0 +1,44 @@
+# Node - Exclure tous les node_modules récursivement
+node_modules
+**/node_modules
+my-requirements-platform/node_modules
+npm-debug.log
+.npm
+.pnpm-store
+
+# Build
+dist
+build
+.next
+out
+.vite
+
+# Logs
+logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
+
+# Git
+.git
+
+# Env
+.env.local
+.env.*.local
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+.mypy_cache
+
+# Temp
+tmp
+temp

@@ -1,0 +1,56 @@
+# agents/requirements.txt - VERSION FLEXIBLE (meilleure)
+
+# LangChain (versions flexibles pour éviter conflits)
+langgraph>=1.0.0,<2.0.0
+langchain>=0.3.20
+langchain-community>=0.3.19
+langchain-core>=0.3.30
+langchain-ollama>=0.2.0
+
+# LLM
+ollama>=0.4.0
+sentence-transformers>=2.2.0
+faiss-cpu>=1.7.4
+
+# Document Processing
+PyMuPDF>=1.23.0
+python-docx>=1.1.0
+pdfplumber>=0.10.0
+camelot-py[cv]>=1.0.0
+
+# Data
+pandas>=2.1.0
+# torch CPU wheel préinstallé dans Dockerfile; rester en numpy<2 pour compatibilité torch/transformers
+numpy==1.26.4
+openpyxl>=3.1.0
+
+# Base de données LOCAL
+psycopg2-binary>=2.9.0
+sqlalchemy>=2.0.0
+
+# API
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+aiohttp>=3.9.0
+aiofiles>=23.0.0
+python-multipart>=0.0.5
+
+# Export
+reportlab>=4.0.0
+python-pptx>=0.6.0
+
+# ML
+scikit-learn>=1.5.0
+
+# Utils
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+
+# Code Quality
+black>=23.0.0
+flake8>=6.0.0

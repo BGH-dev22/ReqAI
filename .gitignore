@@ -39,3 +39,46 @@ testem.log
 Thumbs.db
 
 .nx/cache
+
+# ============================================
+# Environment & Secrets (DO NOT COMMIT)
+# ============================================
+.env
+.env.local
+.env.*.local
+.env.production.local
+.env.development.local
+
+# ============================================
+# Python & Virtual Environment
+# ============================================
+venv/
+env/
+ENV/
+.Python
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# ============================================
+# API Keys & Credentials
+# ============================================
+*.key
+*.pem
+*.private
+
+# ============================================
+# Build artifacts & caches
+# ============================================
+dist/
+build/
+*.cache
+.cache/
+
+# ============================================
+# Nested repositories (submodules)
+# ============================================
+my-requirements-platform/

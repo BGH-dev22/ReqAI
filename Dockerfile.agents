@@ -1,0 +1,29 @@
+FROM python:3.10-slim
+
+# Increase pip network timeout for large wheels (e.g., torch)
+ENV PIP_DEFAULT_TIMEOUT=180
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Preinstall torch from CPU index to avoid huge download retries
+RUN pip install --no-cache-dir --default-timeout=180 \
+    --index-url https://download.pytorch.org/whl/cpu \
+    torch==2.2.2
+
+# Copy requirements
+COPY agents/requirements.txt .
+RUN pip install --no-cache-dir --default-timeout=180 \
+    --extra-index-url https://download.pytorch.org/whl/cpu \
+    -r requirements.txt
+
+# Copy agents code
+COPY agents ./agents
+
+EXPOSE 8000
+
+CMD ["uvicorn", "agents.api:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

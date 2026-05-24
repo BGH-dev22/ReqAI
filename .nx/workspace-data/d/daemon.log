@@ -1,0 +1,119 @@
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:56.574Z - Started listening on: \\.\pipe\nx\C:\Users\Hp\AppData\Local\Temp\382ca6577cef7c5436c4\d.sock
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:56.584Z - [WATCHER]: Subscribed to changes within: C:\Users\Hp\projets\makerkit (native)
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:56.586Z - [NX-CONSOLE]: Pulling latest Nx (latest) to check console status...
+Fetching nx...
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:58.382Z - Established a connection. Number of open connections: 1
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:58.384Z - Established a connection. Number of open connections: 2
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:58.388Z - Closed a connection. Number of open connections: 1
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:58.395Z - Received raw message of length 32
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:58.395Z - Received json message of type GET_NX_CONSOLE_STATUS
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:58.397Z - Serializing response for GET_NX_CONSOLE_STATUS message in json mode
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:58.397Z - Responding to GET_NX_CONSOLE_STATUS message
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:58.398Z - [REQUEST]: Responding to the client. handleGetNxConsoleStatus
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:58.401Z - Done responding to the client handleGetNxConsoleStatus
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:58.401Z - Handled json message GET_NX_CONSOLE_STATUS. Handling time: 0. Response time: 4.
+Time for 'plugin worker 36748 code loading' 13.362400000000001
+Time for 'plugin worker 31648 code loading' 11.9302
+Time for 'plugin worker 37164 code loading' 12.7151
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:58.618Z - Received raw message of length 32
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:58.618Z - Received json message of type REQUEST_PROJECT_GRAPH
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:58.619Z - [REQUEST]: Client Request for Project Graph Received
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:59.338Z - Time taken for 'Load Nx Plugin: C:\Users\Hp\projets\makerkit\node_modules\nx\src\plugins\package-json' 983.8871999999997ms
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:59.346Z - Time taken for 'Load Nx Plugin: C:\Users\Hp\projets\makerkit\node_modules\nx\src\plugins\project-json\build-nodes\project-json' 991.5773999999997ms
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:59.388Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:59.388Z - [REQUEST]: 
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:59.388Z - [REQUEST]: 
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:59.510Z - Reusing in-memory cached project graph because no files changed.
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:59.532Z - Time taken for 'loadDefaultNxPlugins' 1033.4638ms
+Time for 'nx/core/project-json:createNodes' 4.5349999999998545
+Time for 'nx/core/package-json:createNodes' 35.2328
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 259.48789999999985
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:41:59.867Z - Time taken for 'build-project-configs' 305.1504ms
+Time for 'build typescript dependencies' 522.3402000000001
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:42:00.442Z - [REQUEST]: Responding to the client with an error. Error when preparing serialized project graph. Failed to process project graph.
+    MultipleProjectsWithSameNameError: The following projects are defined in multiple locations:
+  - data-loader-supabase-core: 
+    - my-requirements-platform/packages/data-loader/supabase/core
+    - packages/data-loader/supabase/core
+  - data-loader-supabase-nextjs: 
+    - my-requirements-platform/packages/data-loader/supabase/nextjs
+    - packages/data-loader/supabase/nextjs
+  - data-loader-supabase-remix: 
+    - my-requirements-platform/packages/data-loader/supabase/remix
+    - packages/data-loader/supabase/remix
+  - qstash: 
+    - my-requirements-platform/packages/qstash
+    - packages/qstash
+  - test-utils: 
+    - my-requirements-platform/packages/test-utils
+    - packages/test-utils
+  
+  To fix this, set a unique name for each project in a project.json inside the project's root. If the project does not currently have a project.json, you can create one that contains only a name.
+      at validateAndNormalizeProjectRootMap (C:\Users\Hp\projets\makerkit\node_modules\nx\src\project-graph\utils\project-configuration-utils.js:496:21)
+      at mergeCreateNodesResults (C:\Users\Hp\projets\makerkit\node_modules\nx\src\project-graph\utils\project-configuration-utils.js:355:9)
+      at C:\Users\Hp\projets\makerkit\node_modules\nx\src\project-graph\utils\project-configuration-utils.js:299:85
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async processFilesAndCreateAndSerializeProjectGraph (C:\Users\Hp\projets\makerkit\node_modules\nx\src\daemon\server\project-graph-incremental-recomputation.js:181:43)
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:42:00.449Z - Time taken for 'total execution time for createProjectGraph()' 588.3314ms
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:42:00.451Z - Done responding to the client null
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:42:00.451Z - Handled json message REQUEST_PROJECT_GRAPH. Handling time: 1824. Response time: 9.
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:42:00.459Z - Closed a connection. Number of open connections: 0
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:42:27.069Z - [NX-CONSOLE]: Failed to use latest Nx, falling back to local implementation. Error: Command failed: pnpm add -D nx@latest --ignore-scripts
+
+DEBUG nx::native::ide::install: Detected editor: VSCode
+DEBUG nx::native::ide::install: Checking if Nx Console extension is installed with: code.cmd --list-extensions
+DEBUG nx::native::ide::install: Nx Console extension is not installed
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:07.411Z - [WATCHER]: package.json was modified
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:07.411Z - [WATCHER]: Processing file changes in outputs
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:07.520Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:07.520Z - [REQUEST]: package.json
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:07.520Z - [REQUEST]: 
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:07.525Z - Time taken for 'hash changed files from watcher' 2.139199999990524ms
+Time for 'nx/core/project-json:createNodes' 1.5244000000093365
+Time for 'nx/core/package-json:createNodes' 7.638300000005984
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 11.866500000003725
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:07.554Z - Time taken for 'build-project-configs' 20.12619999999879ms
+Time for 'build typescript dependencies' 0.10199999999895226
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:07.575Z - Time taken for 'total execution time for createProjectGraph()' 25.620100000000093ms
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:48.823Z - [WATCHER]: tsconfig.node.json was modified
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:48.824Z - [WATCHER]: Processing file changes in outputs
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.038Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.038Z - [REQUEST]: tsconfig.node.json
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.038Z - [REQUEST]: 
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.048Z - Time taken for 'hash changed files from watcher' 1.0745000000024447ms
+Time for 'nx/core/project-json:createNodes' 2.8874999999970896
+Time for 'nx/core/package-json:createNodes' 15.821000000010827
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 21.412899999995716
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.087Z - Time taken for 'build-project-configs' 33.20590000000084ms
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.097Z - [WATCHER]: Processing file changes in outputs
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.100Z - [WATCHER]: tsconfig.node.json was modified
+Time for 'build typescript dependencies' 0.027500000011059456
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.116Z - Time taken for 'total execution time for createProjectGraph()' 35.73839999998745ms
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.523Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.523Z - [REQUEST]: tsconfig.node.json
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.523Z - [REQUEST]: 
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.534Z - Time taken for 'hash changed files from watcher' 1.0411999999923864ms
+Time for 'nx/core/project-json:createNodes' 2.7541999999957625
+Time for 'nx/core/package-json:createNodes' 18.63760000000184
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 29.155199999993783
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.600Z - Time taken for 'build-project-configs' 50.01900000000023ms
+Time for 'build typescript dependencies' 0.042199999996228144
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:49.643Z - Time taken for 'total execution time for createProjectGraph()' 53.60119999999006ms
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:53.889Z - [WATCHER]: 0 file(s) created or restored, 2 file(s) modified, 0 file(s) deleted
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:53.894Z - [WATCHER]: Processing file changes in outputs
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:54.709Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:54.709Z - [REQUEST]: package.json,tsconfig.node.json
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:54.709Z - [REQUEST]: 
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:54.744Z - Time taken for 'hash changed files from watcher' 1.5621000000101048ms
+Time for 'nx/core/project-json:createNodes' 2.7875000000058208
+Time for 'nx/core/package-json:createNodes' 18.86609999999928
+Time for 'nx/js/dependencies-and-lockfile:createNodes' 32.572000000000116
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:54.820Z - Time taken for 'build-project-configs' 56.931199999991804ms
+Time for 'build typescript dependencies' 0.043699999994714744
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:43:54.868Z - Time taken for 'total execution time for createProjectGraph()' 62.98709999999846ms
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:45:13.911Z - [WATCHER]: package.json was modified
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:45:13.911Z - [WATCHER]: Processing file changes in outputs
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:45:14.808Z - [WATCHER]: Processing file changes in outputs
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:45:14.813Z - [WATCHER]: Stopping the watcher for C:\Users\Hp\projets\makerkit (sources)
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:45:14.813Z - [WATCHER]: Stopping the watcher for C:\Users\Hp\projets\makerkit (outputs)
+[NX v22.2.3 Daemon Server] - 2025-12-14T12:45:14.815Z - Server stopped because: "LOCK_FILES_CHANGED"

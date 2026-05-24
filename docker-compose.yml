@@ -1,0 +1,120 @@
+services:
+  # Frontend - React + Vite
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - REACT_APP_SUPABASE_URL=http://localhost:54321
+      - REACT_APP_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhyeXpjeXh3Y211bHZidGUiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTYzMjMzNDgyNywiZXhwIjoxOTQ3OTA0ODI3fQ.gDvxF3nRtHvbJ7r_VVvPgI0bLQVHZI9tnMU5nzS3Zxc
+      - VITE_SUPABASE_URL=http://localhost:54321
+      - VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhyeXpjeXh3Y211bHZidGUiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTYzMjMzNDgyNywiZXhwIjoxOTQ3OTA0ODI3fQ.gDvxF3nRtHvbJ7r_VVvPgI0bLQVHZI9tnMU5nzS3Zxc
+    volumes:
+      - ./src:/app/src
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+  # PostgreSQL - Database
+  postgres:
+    image: postgres:15-alpine
+    ports:
+      - "54321:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_INITDB_ARGS=--encoding=UTF8
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./supabase/migrations:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  # pgAdmin - Database UI (pour explorer la DB)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    ports:
+      - "54323:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@test.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+  # Ollama - Modèles LLM locaux
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11434
+    networks:
+      - app-network
+    # Initialisation des modèles (optionnel)
+    # Décommenter pour pré-télécharger les modèles
+    # entrypoint: >
+    #   sh -c "
+    #   ollama pull llama3.1 &&
+    #   ollama pull qwen2 &&
+    #   ollama pull phi &&
+    #   exec ollama serve
+    #   "
+
+  # Python Backend - Agents
+  agents:
+    build:
+      context: .
+      dockerfile: Dockerfile.agents
+    ports:
+      - "8000:8000"
+    environment:
+      - SUPABASE_URL=http://supabase:54322
+      - SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhyeXpjeXh3Y211bHZidGUiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTYzMjMzNDgyNywiZXhwIjoxOTQ3OTA0ODI3fQ.gDvxF3nRtHvbJ7r_VVvPgI0bLQVHZI9tnMU5nzS3Zxc
+      - OLLAMA_HOST=http://ollama:11434
+      # LLM Configuration - Choisir: groq, together, fireworks, ou ollama
+      - LLM_PROVIDER=${LLM_PROVIDER:-groq}
+      - OLLAMA_MODEL=${OLLAMA_MODEL:-tinyllama}
+      # API Keys pour LLM cloud (gratuit)
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
+      - TOGETHER_API_KEY=${TOGETHER_API_KEY:-}
+      - FIREWORKS_API_KEY=${FIREWORKS_API_KEY:-}
+      - ENVIRONMENT=development
+    volumes:
+      - ./agents:/app/agents
+    depends_on:
+      - postgres
+      - ollama
+    networks:
+      - app-network
+
+  # Redis - Cache (optionnel)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+  ollama_data:
+  redis_data:
+
+networks:
+  app-network:
+    driver: bridge
